@@ -1,0 +1,13 @@
+﻿body {
+}
+
+.standard_label {
+    display: inline-block;
+    float: left;
+    padding-right: 14px;
+}
+
+.standard_input {
+    display: inline-block;
+    float: left;
+}

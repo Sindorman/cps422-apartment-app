@@ -1,0 +1,45 @@
+﻿@page "/addproperty"
+
+@using apartment_app.Data
+<link href="css/AddProperty.css" rel="stylesheet" />
+
+<h1>Add Property</h1>
+
+<form>
+
+    (all submissions are subject to approval)<br><br />
+
+    <label class="standard_label" for="ownerName">Property Owner:</label>
+    <input @bind="property.Owner" @bind:event="oninput" class="standard_input" type="text" id="ownerName" name="ownerName"><br><br>
+    <label class="standard_label" for="addressLine1">Address (Line 1):</label>
+    <input @bind="property.AddressLine1" @bind:event="oninput" class="standard_input" type="text" id="addressLine1" name="addressLine1"><br><br>
+    <label class="standard_label" for="addressLine2">Address (Line 2):</label>
+    <input @bind="property.AddressLine2" @bind:event="oninput" class="standard_input" type="text" id="addressLine2" name="addressLine2"><br><br>
+    <label class="standard_label" for="ratesName">Rent (Per person):</label>
+    <input @bind="property.Rent" @bind:event="oninput" class="standard_input" type="number" id="ratesName" name="ratesName"><br><br>
+    <label class="standard_label" for="numOccupants">Spaces (total):</label>
+    <input @bind="property.Spaces" @bind:event="oninput" class="standard_input" type="number" id="numOccupants" name="numOccupants"><br><br>
+    <label class="standard_label" for="spacesAvailable">Spaces available:</label>
+    <input @bind="property.SpacesAvailable" @bind:event="oninput" class="standard_input" type="number" id="spacesAvailable" name="spacesAvailable"><br><br>
+
+    <textarea @bind="property.Description" @bind:event="oninput" id="propertyDescription" name="propertyDescription" rows="4" cols="50" placeholder="Enter any additional information..."></textarea><br><br>
+
+
+    <label class="standard_label" for="uploadImages">Upload Images:</label>
+    <input type="file" name="name" class="standard_input" accept="image/x-png,image/jpeg" multiple><br><br><br>
+
+    <input type="submit" value="Submit" @onclick="CreatePropertyObject">
+</form>
+
+
+@code {
+
+    public Property property { get; set; } = new Property();
+
+    private void CreatePropertyObject()
+    {
+        // Put property object in database
+
+    }
+
+}
