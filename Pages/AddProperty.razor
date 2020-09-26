@@ -1,6 +1,7 @@
 ﻿@page "/addproperty"
 
 @using apartment_app.Data
+@using System.IO;
 <link href="css/AddProperty.css" rel="stylesheet" />
 
 <h1>Add Property</h1>
@@ -28,19 +29,45 @@
 
     <label class="standard_label" for="uploadImages">Upload Images:</label>
 
-    <InputFile multiple accept="image/x-png,image/jpeg" OnChange="HandleFileSelected" />
+    <InputFile id="uploadFiles" multiple accept="image/x-png,image/jpeg" OnChange="HandleFilesSelected" />
 
 
     <input type="submit" value="Submit" @onclick="CreatePropertyObject">
 </form>
 
 
+@if (selectedFiles != null)
+{
+    foreach (var file in selectedFiles)
+    {
+        var isLoading = file.Data.Position > 0;
+
+        <div class="file-row">
+            <!-- File info -->
+            <div>
+                <h2>@file.Name</h2>
+            </div>
+
+            <!-- Upload button -->
+            <button @onclick="() => LoadFile(file)" disabled="@isLoading">
+                @if (!isLoading)
+                {
+                    <span>Load</span>
+                }
+                else
+                {
+                    <span>Loaded @((100.0 * file.Data.Position / file.Size).ToString("0"))%</span>
+                }
+            </button>
+        </div>
+    }
+}
+
+
 @code {
 
-    // <input type="file" name="name" class="standard_input" accept="image/x-png,image/jpeg" multiple><br><br><br>
-
     public Property property { get; set; } = new Property();
-    //IFileListEntry[] files;
+    IFileListEntry[] selectedFiles;
 
     private void CreatePropertyObject()
     {
@@ -49,9 +76,21 @@
 
     }
 
-    void HandleFileSelected(IFileListEntry[] files)
+    void HandleFilesSelected(IFileListEntry[] files)
     {
-        property.FileNames = files;
+        selectedFiles = files;
+    }
+
+    async Task LoadFile(IFileListEntry file)
+    {
+        // So the UI updates to show progress
+        file.OnDataRead += (sender, eventArgs) => InvokeAsync(StateHasChanged);
+
+        // Just load into .NET memory to show it can be done
+        // Alternatively it could be saved to disk, or parsed in memory, or similar
+        var ms = new MemoryStream();
+        await file.Data.CopyToAsync(ms);
+        property.FileNames.Add(file.Name);
     }
 
 }

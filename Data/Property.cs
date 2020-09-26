@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.Localization.Internal;
 using System;
 using System.Collections.Generic;
-using BlazorInputFile;              // for IFileEntry
+//using BlazorInputFile;                              // for IFileEntry
 
 namespace apartment_app.Data
 {
@@ -22,6 +22,6 @@ namespace apartment_app.Data
 
         public string Description { get; set; }     // Text description of additional property information
 
-        public IFileListEntry[] FileNames { get; set; } // List of image file names
+        public List<string> FileNames { get; set; } // List of image file names
     }
 }
