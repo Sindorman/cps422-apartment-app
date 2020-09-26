@@ -5,6 +5,7 @@
 
 <h1>Add Property</h1>
 
+
 <form>
 
     (all submissions are subject to approval)<br><br />
@@ -26,7 +27,9 @@
 
 
     <label class="standard_label" for="uploadImages">Upload Images:</label>
-    <input type="file" name="name" class="standard_input" accept="image/x-png,image/jpeg" multiple><br><br><br>
+
+    <InputFile multiple accept="image/x-png,image/jpeg" OnChange="HandleFileSelected" />
+
 
     <input type="submit" value="Submit" @onclick="CreatePropertyObject">
 </form>
@@ -34,12 +37,21 @@
 
 @code {
 
+    // <input type="file" name="name" class="standard_input" accept="image/x-png,image/jpeg" multiple><br><br><br>
+
     public Property property { get; set; } = new Property();
+    //IFileListEntry[] files;
 
     private void CreatePropertyObject()
     {
+
         // Put property object in database
 
+    }
+
+    void HandleFileSelected(IFileListEntry[] files)
+    {
+        property.FileNames = files;
     }
 
 }
