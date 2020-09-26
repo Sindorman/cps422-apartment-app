@@ -11,10 +11,26 @@ namespace apartment_app.Data
         List<Property> properties;
 
         /// <summary>
+        /// Method to add property
+        /// </summary>
+        /// <param name="property">Property to add</param>
+        public void AddProperty(Property property)
+        {
+        }
+
+        /// <summary>
         /// Method to edit the property
         /// </summary>
         /// <param name="property">property landlord wants to manage.</param>
         public void ManageProperties(Property property)
+        {
+        }
+
+        /// <summary>
+        /// Method to delete property
+        /// </summary>
+        /// <param name="property">property to delete</param>
+        public void DeleteProperty(Property property)
         {
         }
     }

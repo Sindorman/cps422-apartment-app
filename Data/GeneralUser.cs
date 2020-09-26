@@ -11,7 +11,8 @@ namespace apartment_app.Data
     {
         private string firstName;
         private string lastName;
-        private List<Property> appliedProperties;
+        // list of properties user has applied to
+        private List<Property> currentProperty;
         // key = email, value = chat log
         private Dictionary<string, UserChat> userChats;
 
