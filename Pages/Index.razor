@@ -1,4 +1,5 @@
 ﻿@page "/"
+@inject NavigationManager NavManager
 @using apartment_app.Data;
 <h1>Search Properties</h1>
 <h5>(Under Construction)</h5>
@@ -9,18 +10,29 @@
     <button class="btn" type="button" style="border-color:black;">Search</button>
 </div>
 
-@foreach (Property property in TempUserDB.Properties)
+
+
+@for(int i = 0; i < TempUserDB.Properties.Count; i++)
 {
+    int index = i;
     <div>
-        <article>
-            <div>Owner : @property.Owner</div>
-            <div>Address : @property.AddressLine1</div>
-            <div>          @property.AddressLine2</div>
-            <div>Rent : @property.Rent</div>
-            <div>Spaces : @property.Spaces</div>
-            <div>Spaces Available : @property.SpacesAvailable</div>
-            <div>Description : @property.Description</div>
-            <button class="btn" type="button" style="border-color:black;">View Property</button>
+        <article class="">
+            <div>Owner : @TempUserDB.Properties[i].Owner</div>
+            <div>Address : @TempUserDB.Properties[i].AddressLine1</div>
+            <div>          @TempUserDB.Properties[i].AddressLine2</div>
+            <div>Rent : @TempUserDB.Properties[i].Rent</div>
+            <div>Spaces : @TempUserDB.Properties[i].Spaces</div>
+            <div>Spaces Available : @TempUserDB.Properties[i].SpacesAvailable</div>
+            <div>Description : @TempUserDB.Properties[i].Description</div>
+            <button class="btn" type="button" style="border-color:black;" @onclick="() => viewPage(index)">View Property</button>
         </article>
     </div>
+}
+
+@code{
+    private void viewPage(int index)
+    {
+        TempUserDB.selectedProperty = index;
+        NavManager.NavigateTo("/viewproperty");
+    }
 }
