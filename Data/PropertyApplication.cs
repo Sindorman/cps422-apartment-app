@@ -14,7 +14,7 @@ namespace apartment_app.Data
 
         public bool IsApproved { get; set; }
         public string ApprovedBy { get; set; }
-        public Property property { get; set; }
+        public Property Property { get; set; }
         public string Applicant { get; set; }
     }
 }
