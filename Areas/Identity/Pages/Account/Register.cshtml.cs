@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Text.Encodings.Web;
 using System.Threading.Tasks;
+using apartment_app.Data;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -60,6 +61,17 @@ namespace apartment_app.Areas.Identity.Pages.Account
             [Display(Name = "Confirm password")]
             [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
             public string ConfirmPassword { get; set; }
+
+            [Required]
+            [DataType(DataType.PhoneNumber)]
+            [StringLength(15, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 11)]
+            [Display(Name = "Phone Number")]
+            public string PhoneNumber { get; set; }
+
+            [Required]
+            [DataType(DataType.Text)]
+            [Display(Name = "Account Type")]
+            public string AccountType { get; set; }
         }
 
         public async Task OnGetAsync(string returnUrl = null)
@@ -74,7 +86,7 @@ namespace apartment_app.Areas.Identity.Pages.Account
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
             if (ModelState.IsValid)
             {
-                var user = new IdentityUser { UserName = Input.Email, Email = Input.Email };
+                var user = new IdentityUser { UserName = Input.Email, Email = Input.Email, PhoneNumber = Input.PhoneNumber };
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)
                 {
@@ -88,18 +100,21 @@ namespace apartment_app.Areas.Identity.Pages.Account
                         values: new { area = "Identity", userId = user.Id, code = code, returnUrl = returnUrl },
                         protocol: Request.Scheme);
 
-                    await _emailSender.SendEmailAsync(Input.Email, "Confirm your email",
-                        $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
+                    await _signInManager.SignInAsync(user, isPersistent: false);
 
-                    if (_userManager.Options.SignIn.RequireConfirmedAccount)
+                    // TODO: Update this code when integrating DB.
+                    if (Input.AccountType == "Tenant")
                     {
-                        return RedirectToPage("RegisterConfirmation", new { email = Input.Email, returnUrl = returnUrl });
+                        GeneralUser genUser = new GeneralUser { UserName = Input.Email, Email = Input.Email, PhoneNumber = Input.PhoneNumber };
+                        TempUserDB.GeneralUsers.Add(Input.Email, genUser);
                     }
                     else
                     {
-                        await _signInManager.SignInAsync(user, isPersistent: false);
-                        return LocalRedirect(returnUrl);
+                        Landlord landUser = new Landlord { UserName = Input.Email, Email = Input.Email, PhoneNumber = Input.PhoneNumber };
+                        TempUserDB.LandLordUsers.Add(Input.Email, landUser);
                     }
+
+                    return LocalRedirect(returnUrl);
                 }
                 foreach (var error in result.Errors)
                 {
