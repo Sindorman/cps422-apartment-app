@@ -1,8 +1,26 @@
 ﻿@page "/"
-
+@using apartment_app.Data;
 <h1>Search Properties</h1>
+<h5>(Under Construction)</h5>
+<h5>(Please Register and Login)</h5>
 
 <div class="search">
-    <input type="text" style="width : 85%; height : 36px"/>
+    <input type="text" style="width : 85%; height : 36px" />
     <button class="btn" type="button" style="border-color:black;">Search</button>
 </div>
+
+@foreach (Property property in TempUserDB.Properties)
+{
+    <div>
+        <article>
+            <div>Owner : @property.Owner</div>
+            <div>Address : @property.AddressLine1</div>
+            <div>          @property.AddressLine2</div>
+            <div>Rent : @property.Rent</div>
+            <div>Spaces : @property.Spaces</div>
+            <div>Spaces Available : @property.SpacesAvailable</div>
+            <div>Description : @property.Description</div>
+            <button class="btn" type="button" style="border-color:black;">View Property</button>
+        </article>
+    </div>
+}

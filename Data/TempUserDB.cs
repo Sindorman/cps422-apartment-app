@@ -10,6 +10,8 @@ namespace apartment_app.Data
     /// </summary>
     public static class TempUserDB
     {
+        public static List<Property> Properties = new List<Property>();
+
         public static Dictionary<string, GeneralUser> GeneralUsers = new Dictionary<string, GeneralUser>();
 
         public static Dictionary<string, Landlord> LandLordUsers = new Dictionary<string, Landlord>();
