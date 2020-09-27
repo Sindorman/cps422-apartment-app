@@ -47,6 +47,16 @@ namespace apartment_app.Areas.Identity.Pages.Account
         public class InputModel
         {
             [Required]
+            [DataType(DataType.Text)]
+            [Display(Name = "First Name")]
+            public string FirstName{ get; set; }
+
+            [Required]
+            [DataType(DataType.Text)]
+            [Display(Name = "Last Name")]
+            public string LastName { get; set; }
+
+            [Required]
             [EmailAddress]
             [Display(Name = "Email")]
             public string Email { get; set; }
@@ -87,6 +97,7 @@ namespace apartment_app.Areas.Identity.Pages.Account
             if (ModelState.IsValid)
             {
                 var user = new IdentityUser { UserName = Input.Email, Email = Input.Email, PhoneNumber = Input.PhoneNumber };
+
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)
                 {
@@ -105,12 +116,12 @@ namespace apartment_app.Areas.Identity.Pages.Account
                     // TODO: Update this code when integrating DB.
                     if (Input.AccountType == "Tenant")
                     {
-                        GeneralUser genUser = new GeneralUser { UserName = Input.Email, Email = Input.Email, PhoneNumber = Input.PhoneNumber };
+                        GeneralUser genUser = new GeneralUser { FirstName = Input.FirstName, LastName = Input.LastName ,UserName = Input.Email, Email = Input.Email, PhoneNumber = Input.PhoneNumber };
                         TempUserDB.GeneralUsers.Add(Input.Email, genUser);
                     }
                     else
                     {
-                        Landlord landUser = new Landlord { UserName = Input.Email, Email = Input.Email, PhoneNumber = Input.PhoneNumber };
+                        Landlord landUser = new Landlord { FirstName = Input.FirstName, LastName = Input.LastName, UserName = Input.Email, Email = Input.Email, PhoneNumber = Input.PhoneNumber };
                         TempUserDB.LandLordUsers.Add(Input.Email, landUser);
                     }
 

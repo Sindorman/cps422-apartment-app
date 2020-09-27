@@ -1,8 +1,38 @@
 ﻿@page "/"
-
+@inject NavigationManager NavManager
+@using apartment_app.Data;
 <h1>Search Properties</h1>
+<h5>(Under Construction)</h5>
+<h5>(Please Register and Login)</h5>
 
 <div class="search">
-    <input type="text" style="width : 85%; height : 36px"/>
+    <input type="text" style="width : 85%; height : 36px" />
     <button class="btn" type="button" style="border-color:black;">Search</button>
 </div>
+
+
+
+@for(int i = 0; i < TempUserDB.Properties.Count; i++)
+{
+    int index = i;
+    <div>
+        <article class="">
+            <div>Owner : @TempUserDB.Properties[i].Owner</div>
+            <div>Address : @TempUserDB.Properties[i].AddressLine1</div>
+            <div>          @TempUserDB.Properties[i].AddressLine2</div>
+            <div>Rent : @TempUserDB.Properties[i].Rent</div>
+            <div>Spaces : @TempUserDB.Properties[i].Spaces</div>
+            <div>Spaces Available : @TempUserDB.Properties[i].SpacesAvailable</div>
+            <div>Description : @TempUserDB.Properties[i].Description</div>
+            <button class="btn" type="button" style="border-color:black;" @onclick="() => viewPage(index)">View Property</button>
+        </article>
+    </div>
+}
+
+@code{
+    private void viewPage(int index)
+    {
+        TempUserDB.selectedProperty = index;
+        NavManager.NavigateTo("/viewproperty");
+    }
+}
