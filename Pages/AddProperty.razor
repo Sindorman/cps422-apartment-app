@@ -2,6 +2,8 @@
 
 @using apartment_app.Data
 @using System.IO;
+@inject NavigationManager NavManager
+
 <link href="css/AddProperty.css" rel="stylesheet" />
 
 <h1>Add Property</h1>
@@ -116,6 +118,7 @@
     private void CreatePropertyObject()
     {
         TempUserDB.Properties.Add(this.property);
+        NavManager.NavigateTo("/");
         // Put property object in database
 
     }
