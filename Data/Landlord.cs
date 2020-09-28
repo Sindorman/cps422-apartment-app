@@ -1,14 +1,19 @@
-﻿//using Microsoft.EntityFrameworkCore.Metadata.Internal;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace apartment_app.Data
 {
+    /// <summary>
+    /// Class representing Land Lord.
+    /// </summary>
     public class Landlord : GeneralUser
     {
-        List<Property> properties;
+        /// <summary>
+        /// Gets or sets list of properties.
+        /// </summary>
+        public List<Property> Properties { get; set; }
 
         /// <summary>
         /// Method to add property

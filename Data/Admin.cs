@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace apartment_app.Data
 {
+    /// <summary>
+    /// Class representing Admin role.
+    /// </summary>
     public class Admin : GeneralUser
     {
         /// <summary>
@@ -13,7 +16,7 @@ namespace apartment_app.Data
         /// </summary>
         /// <param name="landlord">the landlord</param>
         /// <param name="property">the landlord's property</param>
-        public void ApproveLandlordProperty(string landlord, Property property)
+        public void ApproveLandlordProperty(Landlord landlord, Property property)
         {
         }
     }
