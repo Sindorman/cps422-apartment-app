@@ -1,15 +1,24 @@
-﻿@page "/viewproperty"
+﻿@page "/viewproperty/{Id:int}"
 @using apartment_app.Data;
 <h1>View Property</h1>
 
-<h3>Owner : @TempUserDB.Properties[TempUserDB.selectedProperty].Owner</h3>
-<h3>Address : @TempUserDB.Properties[TempUserDB.selectedProperty].AddressLine1</h3>
-<h3>          @TempUserDB.Properties[TempUserDB.selectedProperty].AddressLine2</h3>
-<h3>Rent : @TempUserDB.Properties[TempUserDB.selectedProperty].Rent</h3>
-<h3>Spaces : @TempUserDB.Properties[TempUserDB.selectedProperty].TotalSpaces</h3>
-<h3>Spaces Available : @TempUserDB.Properties[TempUserDB.selectedProperty].SpacesAvailable</h3>
-<h3>Description : @TempUserDB.Properties[TempUserDB.selectedProperty].Description</h3>
+<h3>Owner : @(Property.Owner.FirstName + " " + Property.Owner.LastName)</h3>
+<h3>Address : @Property.AddressLine1</h3>
+<h3>          @Property.AddressLine2</h3>
+<h3>Rent : @Property.Rent</h3>
+<h3>Spaces : @Property.TotalSpaces</h3>
+<h3>Spaces Available : @Property.SpacesAvailable</h3>
+<h3>Description : @Property.Description</h3>
 <button class="btn" type="button" style="border-color:black;">Contact Owner</button>
-@code {
 
+@code {
+    [Parameter]
+    public int Id { get; set; }
+
+    public Property Property { get; set; }
+
+    protected override void OnInitialized()
+    {
+        Property = TempUserDB.Properties[Id];
+    }
 }
