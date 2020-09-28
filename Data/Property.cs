@@ -7,7 +7,6 @@ namespace apartment_app.Data
 {
     public class Property 
     {
-        
         public string Owner { get; set; }           // Name of the property owner
 
         public string AddressLine1 { get; set; }    // The first address line
