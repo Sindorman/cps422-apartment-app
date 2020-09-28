@@ -74,7 +74,7 @@ namespace apartment_app.Areas.Identity.Pages.Account
 
             [Required]
             [DataType(DataType.PhoneNumber)]
-            [StringLength(15, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 11)]
+            [StringLength(15, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 10)]
             [Display(Name = "Phone Number")]
             public string PhoneNumber { get; set; }
 

@@ -1,0 +1,14 @@
+﻿.search {
+    margin: 2% 0 2% 0;
+    width: 100%;
+}
+
+.search-input {
+    width : 85%;
+    height : 36px;
+    margin-right: 2%;
+}
+
+.search-table {
+    width: 97%
+}
