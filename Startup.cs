@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -39,6 +39,9 @@ namespace apartment_app
             services.AddRazorPages();
             services.AddServerSideBlazor();
             services.AddScoped<AuthenticationStateProvider, RevalidatingIdentityAuthenticationStateProvider<IdentityUser>>();
+
+            services.AddDbContext<PropertiesContext>(options =>
+                    options.UseSqlServer(Configuration.GetConnectionString("PropertiesContext")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

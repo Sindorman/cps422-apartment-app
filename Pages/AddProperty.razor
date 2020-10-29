@@ -137,7 +137,7 @@
         // Alternatively it could be saved to disk, or parsed in memory, or similar
         var ms = new MemoryStream();
         await file.Data.CopyToAsync(ms);
-        property.FileNames.Add(file.Name);
+        //property.FileNames.Add(new ImagePath());
     }
 
 }

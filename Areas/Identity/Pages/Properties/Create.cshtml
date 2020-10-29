@@ -1,0 +1,64 @@
+﻿@page
+@model apartment_app.Areas.Identity.Pages.Properties.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Property</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Property.Name" class="control-label"></label>
+                <input asp-for="Property.Name" class="form-control" />
+                <span asp-validation-for="Property.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Property.AddressLine1" class="control-label"></label>
+                <input asp-for="Property.AddressLine1" class="form-control" />
+                <span asp-validation-for="Property.AddressLine1" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Property.AddressLine2" class="control-label"></label>
+                <input asp-for="Property.AddressLine2" class="form-control" />
+                <span asp-validation-for="Property.AddressLine2" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Property.Rent" class="control-label"></label>
+                <input asp-for="Property.Rent" class="form-control" />
+                <span asp-validation-for="Property.Rent" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Property.TotalSpaces" class="control-label"></label>
+                <input asp-for="Property.TotalSpaces" class="form-control" />
+                <span asp-validation-for="Property.TotalSpaces" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Property.SpacesAvailable" class="control-label"></label>
+                <input asp-for="Property.SpacesAvailable" class="form-control" />
+                <span asp-validation-for="Property.SpacesAvailable" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Property.Description" class="control-label"></label>
+                <input asp-for="Property.Description" class="form-control" />
+                <span asp-validation-for="Property.Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

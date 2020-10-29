@@ -10,6 +10,7 @@ namespace apartment_app.Data
     /// </summary>
     public class UserChat
     {
+        public int ID;
         /// <summary>
         /// User 1.
         /// </summary>

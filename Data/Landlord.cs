@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -13,6 +14,7 @@ namespace apartment_app.Data
         /// <summary>
         /// Gets or sets list of properties.
         /// </summary>
+        [InverseProperty("Owner")]
         public List<Property> Properties { get; set; }
 
         /// <summary>

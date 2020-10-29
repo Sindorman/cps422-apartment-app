@@ -1,6 +1,7 @@
 ﻿@page "/"
 @inject NavigationManager NavManager
 @using apartment_app.Data;
+@using apartment_app.Areas.Identity.Pages.Properties
 
 <link href="css/Index.css" rel="stylesheet" />
 
@@ -41,5 +42,6 @@
                 <td>@TempUserDB.Properties[i].Description</td>
             </tr>
         }
-        </tbody>
+    </tbody>
 </table>
+

@@ -25,6 +25,7 @@ namespace apartment_app.Data.Migrations
                    PropertyImages = table.Column<string>(nullable: true),
                    IsApproved = table.Column<bool>(defaultValue: false),
                });
+
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
