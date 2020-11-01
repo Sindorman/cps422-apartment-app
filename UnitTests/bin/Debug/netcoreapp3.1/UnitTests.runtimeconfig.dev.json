@@ -1,0 +1,8 @@
+{
+  "runtimeOptions": {
+    "additionalProbingPaths": [
+      "C:\\Users\\GGHyper\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\GGHyper\\.nuget\\packages"
+    ]
+  }
+}
