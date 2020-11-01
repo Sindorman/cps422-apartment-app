@@ -28,6 +28,16 @@ namespace apartment_app.Data
         public Property CurrentProperty { get; set; }
 
         /// <summary>
+        /// Defines if user is an Admin
+        /// </summary>
+        private bool isAdmin;
+
+        /// <summary>
+        /// Defines if user is a LandLord
+        /// </summary>
+        private bool isLandLord;
+
+        /// <summary>
         /// User chats represented as key = email, value = chat object.
         /// </summary>
         private Dictionary<string, UserChat> userChats;

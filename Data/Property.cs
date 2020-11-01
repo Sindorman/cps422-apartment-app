@@ -34,7 +34,7 @@ namespace apartment_app.Data
         /// Gets or sets Address line 2.
         /// </summary>
         [Required]
-        public string AddressLine2 { get; set; }
+        public string AddressLine2 { get; set; } = "";
 
         /// <summary>
         /// Gets or sets Rent.
@@ -58,7 +58,7 @@ namespace apartment_app.Data
         /// Gets or sets Description.
         /// </summary>
         [Required]
-        public string Description { get; set; }
+        public string Description { get; set; } = "";
 
         /// <summary>
         /// Gets or sets list of files.

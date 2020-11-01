@@ -1,10 +1,16 @@
-﻿.search {
+﻿.index-page{
+    margin: 1% 1% 0 1%;
+}
+
+
+.search {
     margin: 2% 0 2% 0;
     width: 100%;
 }
 
 .search-input {
-    width : 85%;
+    display: unset;
+    width : 85% !important;
     height : 36px;
     margin-right: 2%;
 }

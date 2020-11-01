@@ -15,6 +15,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using apartment_app.Areas.Identity;
 using apartment_app.Data;
+using Blazored.Modal;
 
 namespace apartment_app
 {
@@ -42,6 +43,8 @@ namespace apartment_app
 
             services.AddDbContext<PropertiesContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("PropertiesContext")));
+
+            services.AddBlazoredModal();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
