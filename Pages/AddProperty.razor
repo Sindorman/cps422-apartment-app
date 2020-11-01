@@ -22,25 +22,22 @@
 @code {
 
     [Parameter]
-    public int? Id { get; set; }
-
     public Property Property { get; set; } = new Property();
+
+    public Landlord add = new Landlord();
 
     private string message = "";
 
     private async Task CreateProperty(Property newProperty)
     {
-        this.Property = newProperty;
-        if (PropertiesDB.Property.Any(e => ((e.Name == Property.Name) || (e.AddressLine1 == Property.AddressLine1))))
+        if(await add.AddProperty(newProperty, PropertiesDB) == true)
         {
-            message = "Property with given Name or address already exists!";
+            message = "";
+            NavManager.NavigateTo("/viewproperty/" + this.Property.ID);
         }
         else
         {
-            PropertiesDB.Property.Add(this.Property);
-            await PropertiesDB.SaveChangesAsync();
-            message = "";
-            NavManager.NavigateTo("/viewproperty/" + this.Property.ID);
+            message = "Property with given Name or address already exists!";
         }
     }
 

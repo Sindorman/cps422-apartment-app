@@ -19,6 +19,8 @@
 
     public Property Property { get; set; } = new Property();
 
+    public Landlord edit = new Landlord();
+
     protected override async Task OnInitializedAsync()
     {
         if (Id != null)
@@ -37,31 +39,13 @@
 
     private async Task EditPropertyFunction(Property newProperty)
     {
-        this.Property = newProperty;
-        PropertiesDB.Attach(Property).State = EntityState.Modified;
-
-        try
+        if(await edit.ManageProperties(newProperty, PropertiesDB) == true)
         {
-            await PropertiesDB.SaveChangesAsync();
+            NavManager.NavigateTo("/viewproperty/" + this.Property.ID);
         }
-        catch (DbUpdateConcurrencyException)
+        else
         {
-            if (!PropertyExists(Property.ID))
-            {
-                NavManager.NavigateTo("/NotFound");
-            }
-            else
-            {
-                throw;
-            }
+            NavManager.NavigateTo("/NotFound");
         }
-
-        NavManager.NavigateTo("/viewproperty/" + this.Property.ID);
     }
-
-    private bool PropertyExists(int id)
-    {
-        return PropertiesDB.Property.Any(e => e.ID == id);
-    }
-
 }

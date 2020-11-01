@@ -17,15 +17,14 @@
 
     [Parameter] public Property Property { get; set; }
 
+    public Landlord delete = new Landlord();
+
     public async Task Confirm()
     {
-        if (Property != null)
+        if(await delete.DeleteProperty(Property, PropertiesDB) == true)
         {
-            PropertiesDB.Property.Remove(Property);
-            await PropertiesDB.SaveChangesAsync();
+            await BlazoredModal.Close(ModalResult.Ok("Closing"));
+            NavManager.NavigateTo("/");
         }
-
-        await BlazoredModal.Close(ModalResult.Ok("Closing"));
-        NavManager.NavigateTo("/");
     }
 }
