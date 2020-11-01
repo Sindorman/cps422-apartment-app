@@ -256,8 +256,11 @@ C:\Users\GGHyper\Desktop\CS422\cps422-apartment-app\UnitTests\bin\Debug\netcorea
 C:\Users\GGHyper\Desktop\CS422\cps422-apartment-app\UnitTests\obj\Debug\netcoreapp3.1\UnitTests.csprojAssemblyReference.cache
 C:\Users\GGHyper\Desktop\CS422\cps422-apartment-app\UnitTests\obj\Debug\netcoreapp3.1\UnitTests.AssemblyInfoInputs.cache
 C:\Users\GGHyper\Desktop\CS422\cps422-apartment-app\UnitTests\obj\Debug\netcoreapp3.1\UnitTests.AssemblyInfo.cs
-C:\Users\GGHyper\Desktop\CS422\cps422-apartment-app\UnitTests\obj\Debug\netcoreapp3.1\UnitTests.csproj.CoreCompileInputs.cache
 C:\Users\GGHyper\Desktop\CS422\cps422-apartment-app\UnitTests\obj\Debug\netcoreapp3.1\UnitTests.csproj.CopyComplete
 C:\Users\GGHyper\Desktop\CS422\cps422-apartment-app\UnitTests\obj\Debug\netcoreapp3.1\UnitTests.dll
 C:\Users\GGHyper\Desktop\CS422\cps422-apartment-app\UnitTests\obj\Debug\netcoreapp3.1\UnitTests.pdb
 C:\Users\GGHyper\Desktop\CS422\cps422-apartment-app\UnitTests\obj\Debug\netcoreapp3.1\UnitTests.genruntimeconfig.cache
+C:\Users\GGHyper\Desktop\CS422\cps422-apartment-app\UnitTests\bin\Debug\netcoreapp3.1\Castle.Core.dll
+C:\Users\GGHyper\Desktop\CS422\cps422-apartment-app\UnitTests\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.InMemory.dll
+C:\Users\GGHyper\Desktop\CS422\cps422-apartment-app\UnitTests\bin\Debug\netcoreapp3.1\Moq.dll
+C:\Users\GGHyper\Desktop\CS422\cps422-apartment-app\UnitTests\obj\Debug\netcoreapp3.1\UnitTests.csproj.CoreCompileInputs.cache

@@ -53,12 +53,12 @@ namespace apartment_app.Data
             {
                 if (context.Property.Any(e => e.ID == newProperty.ID))
                 {
-                    return false;
                 }
                 else
                 {
                     throw;
                 }
+                return false;
             }
 
             return true;
