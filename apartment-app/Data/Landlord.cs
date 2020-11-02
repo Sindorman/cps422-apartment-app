@@ -25,7 +25,7 @@ namespace apartment_app.Data
         /// <param name="property">Property to add</param>
         public async Task<bool> AddProperty(Property newProperty, PropertiesContext context)
         {
-            if (context.Property.Any(e => ((e.Name == newProperty.Name) || (e.AddressLine1 == newProperty.AddressLine1))))
+            if (context.Property.Any(e => (e.ID == newProperty.ID)))
             {
                 return false;
             }

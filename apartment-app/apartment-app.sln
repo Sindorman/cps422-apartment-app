@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.30503.244
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "apartment-app", "apartment-app.csproj", "{6CB85F02-33EB-4E68-90DF-DBA2FACA6B60}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTests", "..\UnitTests\UnitTests.csproj", "{79C2840F-519C-48FE-87B9-12BEB7C5A307}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tests", "..\UnitTests\Tests.csproj", "{79C2840F-519C-48FE-87B9-12BEB7C5A307}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

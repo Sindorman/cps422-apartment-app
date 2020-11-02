@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore.Internal;
 using System.Linq;
 
-namespace UnitTests
+namespace Tests
 {
     [TestFixture]
     public class PropertiesTest
@@ -69,7 +69,8 @@ namespace UnitTests
             {
                 // edit property, will return true if property exists and edited
                 Assert.AreEqual(true, await this.test.ManageProperties(new Property { ID = 110, AddressLine1 = "hello", AddressLine2 = "World", Description = "Cool", FileNames = null, Name = "hien", Owner = null, Rent = 100, SpacesAvailable = 2, TotalSpaces = 6 }, context));
-                
+                Assert.AreEqual(true, context.Property.Any(e => e.ID == 110 && e.AddressLine1.Equals("hello")));
+                Assert.AreEqual(false, context.Property.Any(e => e.ID == 110 && e.AddressLine1.Equals("k")));
                 // catch exception of no entry to edit
                 try
                 {
