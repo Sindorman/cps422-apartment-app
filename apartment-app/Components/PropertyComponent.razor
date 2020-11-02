@@ -1,0 +1,129 @@
+﻿@using apartment_app.Data
+@using System.IO;
+@using Microsoft.EntityFrameworkCore
+@inject PropertiesContext PropertiesDB
+
+<link href="~/css/PropertyComponent.css" rel="stylesheet" />
+
+<EditForm Model="Property" OnValidSubmit="EditProperty">
+    <div class="input-group">
+        <div class="input-group-prepend">
+            <span class="input-group-text" id="">Property Name</span>
+        </div>
+        <input required @bind="Property.Name" @bind:event="oninput" class="form-control" type="text" id="PropertyName" name="PropertyName">
+    </div>
+    <br>
+    <div class="input-group">
+        <div class="input-group-prepend">
+            <span class="input-group-text" id="">Address (Line 1)</span>
+        </div>
+        <input required @bind="Property.AddressLine1" @bind:event="oninput" class="form-control" type="text" id="addressLine1" name="addressLine1">
+    </div>
+    <br>
+    <div class="input-group">
+        <div class="input-group-prepend">
+            <span class="input-group-text" id="">Address (Line 2)</span>
+        </div>
+        <input @bind="Property.AddressLine2" @bind:event="oninput" class="form-control" type="text" id="addressLine2" name="addressLine2">
+    </div>
+    <br>
+    <div class="input-group">
+        <div class="input-group-prepend">
+            <span class="input-group-text" id="">Rent (Per person)</span>
+        </div>
+        <input required min="0" @bind="Property.Rent" @bind:event="oninput" class="form-control" type="number" id="ratesName" name="ratesName">
+    </div>
+    <br>
+    <div class="input-group">
+        <div class="input-group-prepend">
+            <span class="input-group-text" id="">Spaces (total)</span>
+        </div>
+        <input required min="1" @bind="Property.TotalSpaces" @bind:event="oninput" class="form-control" type="number" id="numOccupants" name="numOccupants">
+    </div>
+    <br>
+    <div class="input-group">
+        <div class="input-group-prepend">
+            <span class="input-group-text" id="">Spaces available</span>
+        </div>
+        <input required min="0" @bind="Property.SpacesAvailable" @bind:event="oninput" class="form-control" type="number" id="spacesAvailable" name="spacesAvailable">
+    </div>
+    <br>
+    <div class="input-group">
+        <div class="input-group-prepend">
+            <span class="input-group-text" id="">Description</span>
+        </div>
+        <textarea @bind="Property.Description" @bind:event="oninput" class="form-control" id="PropertyDescription" name="PropertyDescription" rows="4" cols="50" placeholder="Enter any additional information..."></textarea>
+    </div>
+    <br>
+    <div class="input-group">
+        <div class="input-group-prepend">
+            <span class="input-group-text" id="">Images</span>
+        </div>
+        <InputFile id="uploadFiles" multiple accept="image/x-png,image/jpeg" class="btn btn-secondary" OnChange="HandleFilesSelected" /><br><br>
+    </div>
+    <br>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+</EditForm>
+
+
+@if (selectedFiles != null)
+{
+    foreach (var file in selectedFiles)
+    {
+        var isLoading = file.Data.Position > 0;
+
+        <div class="file-row">
+            <!-- File info -->
+            <div>
+                <h2>@file.Name</h2>
+            </div>
+
+            <!-- Upload button -->
+            <button @onclick="() => LoadFile(file)" disabled="@isLoading">
+                @if (!isLoading)
+                {
+                    <span>Load</span>
+                }
+                else
+                {
+                    <span>Loaded @((100.0 * file.Data.Position / file.Size).ToString("0"))%</span>
+                }
+            </button>
+        </div>
+    }
+}
+
+
+@code {
+
+    [Parameter]
+    public Property Property { get; set; } = new Property();
+
+    [Parameter]
+    public EventCallback<Property> PropertyChanged { get; set; }
+
+    IFileListEntry[] selectedFiles;
+
+    private async Task EditProperty()
+    {
+        await PropertyChanged.InvokeAsync(this.Property);
+    }
+
+    void HandleFilesSelected(IFileListEntry[] files)
+    {
+        selectedFiles = files;
+    }
+
+    async Task LoadFile(IFileListEntry file)
+    {
+        // So the UI updates to show progress
+        file.OnDataRead += (sender, eventArgs) => InvokeAsync(StateHasChanged);
+
+        // Just load into .NET memory to show it can be done
+        // Alternatively it could be saved to disk, or parsed in memory, or similar
+        var ms = new MemoryStream();
+        await file.Data.CopyToAsync(ms);
+        //Property.FileNames.Add(new ImagePath());
+    }
+}
