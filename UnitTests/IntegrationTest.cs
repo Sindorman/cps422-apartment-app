@@ -45,10 +45,10 @@ namespace Tests
         }
 
         /// <summary>
-        /// Integration test method
+        /// Integration test method step 1.
         /// </summary>
         [Test]
-        public async Task testIntegration()
+        public async Task testIntegrationStep1()
         {
             using (var context = new PropertiesContext(this.options))
             {
@@ -56,20 +56,51 @@ namespace Tests
                 context.Entry<Property>(this.newProp).State = EntityState.Detached;
 
                 Assert.AreEqual(true, context.Property.Any(e => e.ID == 10 && e.AddressLine1.Equals("hello")));
+            }
+        }
+
+        /// <summary>
+        /// Integration test method step 2
+        /// </summary>
+        [Test]
+        public async Task testIntegrationStep2()
+        {
+            using (var context = new PropertiesContext(this.options))
+            {
+                await test.AddProperty(this.newProp, context);
+                context.Entry<Property>(this.newProp).State = EntityState.Detached;
 
                 Property newProperty = new Property { ID = 10, AddressLine1 = "helloWorld", AddressLine2 = "World", Description = "Cool", FileNames = null, Name = "hien", Owner = null, Rent = 100, SpacesAvailable = 2, TotalSpaces = 6 };
                 await test.ManageProperties(newProperty, context);
                 context.Entry<Property>(newProperty).State = EntityState.Detached;
 
                 Assert.AreEqual(true, context.Property.Any(e => e.ID == 10 && e.AddressLine1.Equals("helloWorld")));
+            }
+        }
+
+        /// <summary>
+        /// Integration test method step 3 (full implementation)
+        /// </summary>
+        [Test]
+        public async Task testIntegrationStep3()
+        {
+            using (var context = new PropertiesContext(this.options))
+            {
+                await test.AddProperty(this.newProp, context);
+                context.Entry<Property>(this.newProp).State = EntityState.Detached;
+
+                Property newProperty = new Property { ID = 10, AddressLine1 = "helloWorld", AddressLine2 = "World", Description = "Cool", FileNames = null, Name = "hien", Owner = null, Rent = 100, SpacesAvailable = 2, TotalSpaces = 6 };
+                await test.ManageProperties(newProperty, context);
+                context.Entry<Property>(newProperty).State = EntityState.Detached;
 
                 await test.DeleteProperty(newProperty, context);
                 context.Entry<Property>(newProperty).State = EntityState.Detached;
                 await context.SaveChangesAsync();
 
-                Assert.AreEqual(false, context.Property.Any(e => e.ID == 10 ));
+                Assert.AreEqual(false, context.Property.Any(e => e.ID == 10));
             }
         }
+
     }
 
 }
