@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "xY92BY0aaG2kExoWcadwm3lIJmiyKdscwt5CWyweRrYMGUs+pGOACT4R8ig+FGr96Kni9RBcNbZzorG0h9jjYQ==",
+  "dgSpecHash": "AWVyisEX+PR/TxPHTRnvwEGlXrs+8/UThPD3qqBeyap8gWdQMcafbx9FW+v3UiSwP+3Rb6OPA/vj8+CItDFxhQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\GGHyper\\Desktop\\CS422\\cps422-apartment-app\\UnitTests\\UnitTests.csproj",
+  "projectFilePath": "C:\\Users\\GGHyper\\Desktop\\CS422\\cps422-apartment-app\\UnitTests\\Tests.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\GGHyper\\.nuget\\packages\\blazored.modal\\5.1.0\\blazored.modal.5.1.0.nupkg.sha512",
     "C:\\Users\\GGHyper\\.nuget\\packages\\blazorinputfile\\0.2.0\\blazorinputfile.0.2.0.nupkg.sha512",

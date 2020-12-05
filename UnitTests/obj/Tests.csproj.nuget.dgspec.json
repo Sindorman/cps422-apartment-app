@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Zacharias\\Desktop\\422\\cps422-apartment-app\\UnitTests\\Tests.csproj": {}
+    "C:\\Users\\GGHyper\\Desktop\\CS422\\cps422-apartment-app\\UnitTests\\Tests.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Zacharias\\Desktop\\422\\cps422-apartment-app\\apartment-app\\apartment-app.csproj": {
+    "C:\\Users\\GGHyper\\Desktop\\CS422\\cps422-apartment-app\\apartment-app\\apartment-app.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Zacharias\\Desktop\\422\\cps422-apartment-app\\apartment-app\\apartment-app.csproj",
+        "projectUniqueName": "C:\\Users\\GGHyper\\Desktop\\CS422\\cps422-apartment-app\\apartment-app\\apartment-app.csproj",
         "projectName": "apartment-app",
-        "projectPath": "C:\\Users\\Zacharias\\Desktop\\422\\cps422-apartment-app\\apartment-app\\apartment-app.csproj",
-        "packagesPath": "C:\\Users\\Zacharias\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Zacharias\\Desktop\\422\\cps422-apartment-app\\apartment-app\\obj\\",
+        "projectPath": "C:\\Users\\GGHyper\\Desktop\\CS422\\cps422-apartment-app\\apartment-app\\apartment-app.csproj",
+        "packagesPath": "C:\\Users\\GGHyper\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\GGHyper\\Desktop\\CS422\\cps422-apartment-app\\apartment-app\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Zacharias\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\GGHyper\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -107,17 +107,17 @@
         }
       }
     },
-    "C:\\Users\\Zacharias\\Desktop\\422\\cps422-apartment-app\\UnitTests\\Tests.csproj": {
+    "C:\\Users\\GGHyper\\Desktop\\CS422\\cps422-apartment-app\\UnitTests\\Tests.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Zacharias\\Desktop\\422\\cps422-apartment-app\\UnitTests\\Tests.csproj",
+        "projectUniqueName": "C:\\Users\\GGHyper\\Desktop\\CS422\\cps422-apartment-app\\UnitTests\\Tests.csproj",
         "projectName": "Tests",
-        "projectPath": "C:\\Users\\Zacharias\\Desktop\\422\\cps422-apartment-app\\UnitTests\\Tests.csproj",
-        "packagesPath": "C:\\Users\\Zacharias\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Zacharias\\Desktop\\422\\cps422-apartment-app\\UnitTests\\obj\\",
+        "projectPath": "C:\\Users\\GGHyper\\Desktop\\CS422\\cps422-apartment-app\\UnitTests\\Tests.csproj",
+        "packagesPath": "C:\\Users\\GGHyper\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\GGHyper\\Desktop\\CS422\\cps422-apartment-app\\UnitTests\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Zacharias\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\GGHyper\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -130,8 +130,8 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "C:\\Users\\Zacharias\\Desktop\\422\\cps422-apartment-app\\apartment-app\\apartment-app.csproj": {
-                "projectPath": "C:\\Users\\Zacharias\\Desktop\\422\\cps422-apartment-app\\apartment-app\\apartment-app.csproj"
+              "C:\\Users\\GGHyper\\Desktop\\CS422\\cps422-apartment-app\\apartment-app\\apartment-app.csproj": {
+                "projectPath": "C:\\Users\\GGHyper\\Desktop\\CS422\\cps422-apartment-app\\apartment-app\\apartment-app.csproj"
               }
             }
           }
