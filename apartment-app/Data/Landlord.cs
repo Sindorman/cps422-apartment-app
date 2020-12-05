@@ -25,7 +25,32 @@ namespace apartment_app.Data
         /// <param name="property">Property to add</param>
         public async Task<bool> AddProperty(Property newProperty, PropertiesContext context)
         {
-            if (context.Property.Any(e => (e.ID == newProperty.ID)))
+            if (newProperty.Rent <= -1 || newProperty.Rent > 10000000)
+            {
+                return false;
+            }
+
+            if (newProperty.ID <= -1 || newProperty.ID > 10000000)
+            {
+                return false;
+            }
+
+            if (newProperty.SpacesAvailable <= -1 || newProperty.SpacesAvailable > 10000000)
+            {
+                return false;
+            }
+
+            if (newProperty.TotalSpaces <= -1 || newProperty.TotalSpaces > 10000000)
+            {
+                return false;
+            }
+
+            if (newProperty.SpacesAvailable > newProperty.TotalSpaces)
+            {
+                return false;
+            }
+
+            if (context.Property.Any(e => ((e.Name == newProperty.Name) || (e.AddressLine1 == newProperty.AddressLine1))))
             {
                 return false;
             }
@@ -43,6 +68,31 @@ namespace apartment_app.Data
         /// <param name="property">property landlord wants to manage.</param>
         public async Task<bool> ManageProperties(Property newProperty, PropertiesContext context)
         {
+            if (newProperty.Rent <= -1 || newProperty.Rent > 10000000)
+            {
+                return false;
+            }
+
+            if (newProperty.ID <= -1 || newProperty.ID > 10000000)
+            {
+                return false;
+            }
+
+            if (newProperty.SpacesAvailable <= -1 || newProperty.SpacesAvailable > 10000000)
+            {
+                return false;
+            }
+
+            if (newProperty.TotalSpaces <= -1 || newProperty.TotalSpaces > 10000000)
+            {
+                return false;
+            }
+
+            if (newProperty.SpacesAvailable > newProperty.TotalSpaces)
+            {
+                return false;
+            }
+
             context.Attach(newProperty).State = EntityState.Modified;
 
             try
