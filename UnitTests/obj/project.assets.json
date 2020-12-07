@@ -9700,19 +9700,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\GGHyper\\.nuget\\packages\\": {}
+    "C:\\Users\\Resurrection\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\GGHyper\\Desktop\\CS422\\cps422-apartment-app\\UnitTests\\Tests.csproj",
+      "projectUniqueName": "C:\\Projects\\cps422-apartment-app\\UnitTests\\Tests.csproj",
       "projectName": "Tests",
-      "projectPath": "C:\\Users\\GGHyper\\Desktop\\CS422\\cps422-apartment-app\\UnitTests\\Tests.csproj",
-      "packagesPath": "C:\\Users\\GGHyper\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\GGHyper\\Desktop\\CS422\\cps422-apartment-app\\UnitTests\\obj\\",
+      "projectPath": "C:\\Projects\\cps422-apartment-app\\UnitTests\\Tests.csproj",
+      "packagesPath": "C:\\Users\\Resurrection\\.nuget\\packages\\",
+      "outputPath": "C:\\Projects\\cps422-apartment-app\\UnitTests\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\GGHyper\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Resurrection\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -9725,8 +9725,8 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "C:\\Users\\GGHyper\\Desktop\\CS422\\cps422-apartment-app\\apartment-app\\apartment-app.csproj": {
-              "projectPath": "C:\\Users\\GGHyper\\Desktop\\CS422\\cps422-apartment-app\\apartment-app\\apartment-app.csproj"
+            "C:\\Projects\\cps422-apartment-app\\apartment-app\\apartment-app.csproj": {
+              "projectPath": "C:\\Projects\\cps422-apartment-app\\apartment-app\\apartment-app.csproj"
             }
           }
         }
@@ -9775,7 +9775,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.403\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.402\\RuntimeIdentifierGraph.json"
       }
     }
   }
