@@ -9,6 +9,7 @@ using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore.Internal;
 using System.Linq;
+using System.Collections.Generic;
 
 namespace Tests
 {
@@ -17,6 +18,11 @@ namespace Tests
     {
         private DbContextOptions<PropertiesContext> options;
         private Landlord test;
+
+        private List<Property> ECPTestList = new List<Property>() {
+                                                    new Property { ID = 2, AddressLine1 = "BestAddress", AddressLine2 = "", Description = "Cool", FileNames = null, Name = "BestPlace", Owner = null, Rent = 50, SpacesAvailable = 200, TotalSpaces = 300 },
+                                                    new Property { ID = 3, AddressLine1 = "BestAddress", AddressLine2 = "", Description = "Cool", FileNames = null, Name = "BestPlace", Owner = null, Rent = 50, SpacesAvailable = 350, TotalSpaces = 300 }
+        };
 
         /// <summary>
         /// setup method
@@ -45,8 +51,8 @@ namespace Tests
         [Test]
         public async Task TestAddProperties()
         {
-           using(var context = new PropertiesContext(this.options))
-           {
+            using (var context = new PropertiesContext(this.options))
+            {
                 // add property to database, will return true if added
                 Assert.AreEqual(true, await this.test.AddProperty(new Property { ID = 10, AddressLine1 = "hello", AddressLine2 = "World", Description = "Cool", FileNames = null, Name = "hien", Owner = null, Rent = 100, SpacesAvailable = 2, TotalSpaces = 6 }, context));
 
@@ -80,7 +86,7 @@ namespace Tests
                 catch
                 {
                     Assert.Pass();
-                }           
+                }
             }
         }
 
@@ -92,7 +98,7 @@ namespace Tests
         public async Task TestDeleteProperties()
         {
             using (var context = new PropertiesContext(this.options))
-            { 
+            {
                 // delete the property
                 Assert.AreEqual(true, await test.DeleteProperty(new Property { ID = 10, AddressLine1 = "hello", AddressLine2 = "World", Description = "Cool", FileNames = null, Name = "hien", Owner = null, Rent = 100, SpacesAvailable = 2, TotalSpaces = 6 }, context));
 
@@ -110,7 +116,9 @@ namespace Tests
         {
             using (var context = new PropertiesContext(this.options))
             {
-                Assert.AreEqual(false, await this.test.AddProperty(new Property { ID = 2, AddressLine1 = "hello1232314", AddressLine2 = "World122341233", Description = "Cool", FileNames = null, Name = "hien1231123123", Owner = null, Rent = 100, SpacesAvailable = 999, TotalSpaces = 120 }, context));
+                Property property = new Property { ID = 78, AddressLine1 = "hello1232314", AddressLine2 = "World122341233", Description = "Cool", FileNames = null, Name = "hien1231123123", Owner = null, Rent = 100, SpacesAvailable = 999, TotalSpaces = 120 };
+                await this.test.AddProperty(property, context);
+                Assert.AreEqual(property.SpacesAvailable, property.TotalSpaces);
             }
         }
 
@@ -236,5 +244,37 @@ namespace Tests
                 Assert.AreEqual(false, await this.test.ManageProperties(new Property { ID = 111, AddressLine1 = "hello1234", AddressLine2 = "World122343", Description = "Cool", FileNames = null, Name = "hien123123", Owner = null, Rent = 112, SpacesAvailable = 113, TotalSpaces = 19876543 }, context));
             }
         }
+
+
+        /// <summary>
+        /// Test method to test <see cref="Landlord.AddProperty(Property, PropertiesContext)"/> function using Weak Equivalence Calss Testing.
+        /// </summary>
+        /// <returns>pass or fail</returns>
+        [Test]
+        public async Task TestWECTAddProperty()
+        {
+            using (var context = new PropertiesContext(this.options))
+            {
+                Assert.IsTrue(await this.test.AddProperty(this.ECPTestList[0], context));
+                bool result = await this.test.DeleteProperty(this.ECPTestList[0], context); // need to clean up for next test
+            }
+        }
+
+        /// <summary>
+        /// Test method to test <see cref="Landlord.AddProperty(Property, PropertiesContext)"/> function using Strong Equivalence Calss Testing.
+        /// </summary>
+        /// <returns>pass or fail</returns>
+        [Test]
+        public async Task TestSECTAddProperty()
+        {
+            using (var context = new PropertiesContext(this.options))
+            {
+                Assert.IsTrue(await this.test.AddProperty(this.ECPTestList[0], context));
+                Assert.IsFalse(await this.test.AddProperty(this.ECPTestList[1], context));
+                await this.test.DeleteProperty(this.ECPTestList[0], context);
+            }
+        }
+
+
     }
 }

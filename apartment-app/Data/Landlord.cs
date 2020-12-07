@@ -25,32 +25,50 @@ namespace apartment_app.Data
         /// <param name="property">Property to add</param>
         public async Task<bool> AddProperty(Property newProperty, PropertiesContext context)
         {
+            // Cannot have no name.
+            if (newProperty.Name == null || newProperty.Name == string.Empty)
+            {
+                return false;
+            }
+
+            // Cannot have empty address.
+            if (newProperty.AddressLine1 == null || newProperty.AddressLine1 == string.Empty)
+            {
+                return false;
+            }
+
+            // Rent cannot be negative or more than max integer.
             if (newProperty.Rent <= -1 || newProperty.Rent > 10000000)
             {
                 return false;
             }
 
+            // ID cannot be negative or more than max integer.
             if (newProperty.ID <= -1 || newProperty.ID > 10000000)
             {
                 return false;
             }
 
+            // Spaces available cannot be negative or more than max integer.
             if (newProperty.SpacesAvailable <= -1 || newProperty.SpacesAvailable > 10000000)
             {
                 return false;
             }
 
+            // Total spaces cannot be negative or more than max integer.
             if (newProperty.TotalSpaces <= -1 || newProperty.TotalSpaces > 10000000)
             {
                 return false;
             }
 
+            // Available spaces cannot be greater than total spaces, since that won't make sense.
             if (newProperty.SpacesAvailable > newProperty.TotalSpaces)
             {
-                return false;
+                newProperty.SpacesAvailable = newProperty.TotalSpaces;
             }
 
-            if (context.Property.Any(e => ((e.Name == newProperty.Name) || (e.AddressLine1 == newProperty.AddressLine1))))
+            // Check if we already contain property with given name or the address.
+            if (context.Property.Any(e => ((e.ID == newProperty.ID) || (e.Name == newProperty.Name) || (e.AddressLine1 == newProperty.AddressLine1))))
             {
                 return false;
             }
@@ -68,27 +86,50 @@ namespace apartment_app.Data
         /// <param name="property">property landlord wants to manage.</param>
         public async Task<bool> ManageProperties(Property newProperty, PropertiesContext context)
         {
+            // Cannot have no name.
+            if (newProperty.Name == null || newProperty.Name == string.Empty)
+            {
+                return false;
+            }
+
+            // Cannot have empty address.
+            if (newProperty.AddressLine1 == null || newProperty.AddressLine1 == string.Empty)
+            {
+                return false;
+            }
+
+            // Rent cannot be negative or more than max integer.
             if (newProperty.Rent <= -1 || newProperty.Rent > 10000000)
             {
                 return false;
             }
 
+            // ID cannot be negative or more than max integer.
             if (newProperty.ID <= -1 || newProperty.ID > 10000000)
             {
                 return false;
             }
 
+            // Spaces available cannot be negative or more than max integer.
             if (newProperty.SpacesAvailable <= -1 || newProperty.SpacesAvailable > 10000000)
             {
                 return false;
             }
 
+            // Total spaces cannot be negative or more than max integer.
             if (newProperty.TotalSpaces <= -1 || newProperty.TotalSpaces > 10000000)
             {
                 return false;
             }
 
+            // Available spaces cannot be greater than total spaces, since that won't make sense.
             if (newProperty.SpacesAvailable > newProperty.TotalSpaces)
+            {
+                newProperty.SpacesAvailable = newProperty.TotalSpaces;
+            }
+
+            // Check if we already contain property with given name or the address. But avoid comparing to itself.
+            if (context.Property.Any(e => ((e.ID != newProperty.ID) && ((e.Name == newProperty.Name) || (e.AddressLine1 == newProperty.AddressLine1)))))
             {
                 return false;
             }
@@ -108,6 +149,7 @@ namespace apartment_app.Data
                 {
                     throw;
                 }
+
                 return false;
             }
 
